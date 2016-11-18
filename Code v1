@@ -1,0 +1,26 @@
+//This code gets the voltage reading from the sensor and converts it into a ppm reading using the map function.
+
+
+
+float volt = 0;
+float ppm = 0;
+
+void setup() {
+  // put your setup code here, to run once:
+Serial.begin(9600);
+pinMode(A1, INPUT);
+analogReference(DEFAULT);
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+volt = analogRead(A1);
+ppm = map(volt, 0, 1023, 300, 1500);
+Serial.print("voc reading: ");
+Serial.print(ppm);
+Serial.println("ppm.");
+delay(1000);
+Serial.println(volt);
+
+
+}
